@@ -1,4 +1,4 @@
-private static string GenerateSequenceNumber()
+public static string GenerateSequenceNumber()
 {
     var guid = Guid.NewGuid().ToString("N");
     var ca = Encoding.Default.GetBytes(guid);
