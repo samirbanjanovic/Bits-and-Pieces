@@ -5,20 +5,23 @@ public static string GenerateSequenceNumber()
     var csa = string.Join("", ca);
 
     double byteGuid;
-    double.TryParse(csa, out byteGuid);
-
-    byteGuid = byteGuid % DateTime.Now.ToOADate();
-
-    var sequence = byteGuid.ToString().Replace(".", "");
-
-    if (sequence.Length > 11)
+    if(double.TryParse(csa, out byteGuid))
     {
-        sequence = sequence.Substring(0, 11);
-    }
-    else
-    {
-        sequence = sequence.PadLeft(11, '0');
+        byteGuid = byteGuid % DateTime.Now.ToOADate();
+
+        var sequence = byteGuid.ToString().Replace(".", "");
+    
+        if (sequence.Length > 11)
+        {
+            sequence = sequence.Substring(0, 11);
+        }
+        else
+        {
+            sequence = sequence.PadLeft(11, '0');
+        }
+    
+        return sequence;
     }
 
-    return sequence;
+    return null;
 }
