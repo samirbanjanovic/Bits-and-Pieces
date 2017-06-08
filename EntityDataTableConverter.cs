@@ -8,7 +8,7 @@ using System.Reflection;
 
 namespace EntityHelpers
 {
-    public class Converter<T>
+    public class EntityDataTableConverter<T>
         where T : class
     {
         private class MemberDetails
@@ -31,7 +31,7 @@ namespace EntityHelpers
         private readonly IList<MemberDetails> _fieldDetails;
         private readonly IList<MemberDetails> _columns;
 
-        public Converter()
+        public EntityDataTableConverter()
         {
             this._entityType = typeof(T);
             this._fieldDetails = new List<MemberDetails>();
